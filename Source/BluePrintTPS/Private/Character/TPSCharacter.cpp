@@ -2,6 +2,7 @@
 
 
 #include "Character/TPSCharacter.h"
+#include "Ability/FPSAttributeSet.h"
 #include "AbilitySystemComponent.h"
 
 // Sets default values
@@ -13,13 +14,16 @@ ATPSCharacter::ATPSCharacter(const FObjectInitializer& ObjectInitializer): Super
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(FName("AbilitySystemComponent"));
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
+
+	AttributeSet = CreateDefaultSubobject<UFPSAttributeSet>(FName("TPSAttributeSet"));
+	AttributeSet->InitMaxHealth(100.0f);
+	AttributeSet->InitHealth(AttributeSet->GetMaxHealth());
 }
 
 // Called when the game starts or when spawned
 void ATPSCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame

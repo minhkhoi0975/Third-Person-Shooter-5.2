@@ -16,6 +16,9 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
 	TObjectPtr<class UAbilitySystemComponent> AbilitySystemComponent;
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
+	TObjectPtr<class UFPSAttributeSet> AttributeSet;
+
 public:
 	// Sets default values for this character's properties
 	ATPSCharacter(const FObjectInitializer& ObjectInitializer);
