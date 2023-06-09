@@ -12,12 +12,18 @@ class BLUEPRINTTPS_API ATPSCharacter : public ACharacter, public IAbilitySystemI
 {
 	GENERATED_BODY()
 
+    // Gameplay Ability System properties.
 public:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
 	TObjectPtr<class UAbilitySystemComponent> AbilitySystemComponent;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
 	TObjectPtr<class UFPSAttributeSet> AttributeSet;
+
+	// AI Stimulus properties.
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+    TObjectPtr<class UAIPerceptionStimuliSourceComponent> AIPerceptionStimuliSource;
 
 public:
 	// Sets default values for this character's properties

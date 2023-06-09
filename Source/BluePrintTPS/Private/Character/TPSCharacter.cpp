@@ -4,6 +4,9 @@
 #include "Character/TPSCharacter.h"
 #include "Ability/FPSAttributeSet.h"
 #include "AbilitySystemComponent.h"
+#include "Perception/AIPerceptionStimuliSourceComponent.h"
+#include "Perception/AISense_Sight.h"
+#include "Perception/AISense_Hearing.h"
 
 // Sets default values
 ATPSCharacter::ATPSCharacter(const FObjectInitializer& ObjectInitializer): Super(ObjectInitializer)
@@ -18,6 +21,10 @@ ATPSCharacter::ATPSCharacter(const FObjectInitializer& ObjectInitializer): Super
 	AttributeSet = CreateDefaultSubobject<UFPSAttributeSet>(FName("TPSAttributeSet"));
 	AttributeSet->InitMaxHealth(100.0f);
 	AttributeSet->InitHealth(AttributeSet->GetMaxHealth());
+
+	AIPerceptionStimuliSource = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(FName("AIPerceptionStimuliSource"));
+	AIPerceptionStimuliSource->bAutoRegister = true;
+	AIPerceptionStimuliSource->RegisterForSense(TSubclassOf<UAISense_Sight>());
 }
 
 // Called when the game starts or when spawned
